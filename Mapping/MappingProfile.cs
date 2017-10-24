@@ -9,11 +9,12 @@ namespace auto_reg.Mapping
         public MappingProfile()
         {
             // Domain to API Resource
-            CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<EmployeeAttendance, EmployeeAttendanceResource>();
+            CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
 
             // API Resource to Domain
             CreateMap<EmployeeAttendanceResource, EmployeeAttendance>();
+            CreateMap<EmployeeAttendanceQueryResource, EmployeeAttendanceQuery>();
         }
     }
 }
