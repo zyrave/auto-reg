@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using auto_reg.Core;
 using auto_reg.Persistence;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,8 @@ namespace auto_reg
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IEmployeeAttendanceRepository, EmployeeAttendanceRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper();
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddMvc();
